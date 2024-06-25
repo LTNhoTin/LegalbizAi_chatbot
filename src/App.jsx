@@ -1,25 +1,29 @@
-// src/App.jsx
 import { useEffect, useState } from "react";
 import NavBar from "./components/NavBar";
 import HomePage from "./pages/HomePage";
 import ChatBot from "./components/ChatBot";
-import FAQPage from "./pages/FAQPage"
+import FAQPage from "./pages/FAQPage";
 import IssuePage from "./pages/IssuePage";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import Footer from "./components/Footer";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
   useEffect(() => {}, []);
-  const [currentPage, SetCurrentPage] = useState("Home");
+  const [currentPage, setCurrentPage] = useState("Home");
+
   return (
     <BrowserRouter>
-      <div className="overflow-hidden">
+      <div className="flex flex-col min-h-screen">
         <NavBar />
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="chat" element={<ChatBot />} />
-          <Route path="issue" element={<IssuePage />} />
-          <Route path="faq" element={<FAQPage />} />
-        </Routes>
+        <main className="flex-grow flex">
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="chat" element={<ChatBot />} />
+            <Route path="issue" element={<IssuePage />} />
+            <Route path="faq" element={<FAQPage />} />
+          </Routes>
+        </main>
+        <Footer />
       </div>
     </BrowserRouter>
   );

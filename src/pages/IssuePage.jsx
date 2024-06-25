@@ -25,7 +25,7 @@ function IssuePage() {
   }
 
   return (
-    <div className="flex justify-center h-[85vh] bg-gradient-to-br from-orange-50 to-orange-100">
+    <div className="flex flex-col items-center justify-center flex-grow bg-gradient-to-br from-orange-50 to-orange-100">
       <input type="checkbox" id="my-modal" className="modal-toggle" />
       <div className="modal">
         <div className="modal-box">
@@ -41,19 +41,19 @@ function IssuePage() {
         </div>
       </div>
 
-      <div className="md:w-[50%]">
-        <h1 className="text-3xl text-center font-bold p-5 bg-[linear-gradient(90deg,hsl(var(--s))_0%,hsl(var(--sf))_9%,hsl(var(--pf))_42%,hsl(var(--p))_47%,hsl(var(--a))_100%)] bg-clip-text will-change-auto [-webkit-text-fill-color:transparent] [transform:translate3d(0,0,0)] motion-reduce:!tracking-normal max-[1280px]:!tracking-normal [@supports(color:oklch(0_0_0))]:bg-[linear-gradient(90deg,hsl(var(--s))_4%,color-mix(in_oklch,hsl(var(--sf)),hsl(var(--pf)))_22%,hsl(var(--p))_45%,color-mix(in_oklch,hsl(var(--p)),hsl(var(--a)))_67%,hsl(var(--a))_100.2%)]">
+      <div className="md:w-[50%] p-4 flex flex-col items-center">
+        <h1 className="text-3xl text-center font-bold p-5 bg-clip-text text-transparent bg-gradient-to-r from-orange-400 to-orange-600">
           Báo lỗi hoặc góp ý
         </h1>
         <p className="text-justify font-semibold text-sm pr-2 pl-2">
           Sự đóng góp ý kiến từ các bạn sẽ là sự hỗ trợ đắc lực giúp chúng tôi ngày càng tốt hoàn thiện sản phẩm hơn.
         </p>
 
-        <form ref={form} onSubmit={sendMail} className="flex flex-col items-center">
+        <form ref={form} onSubmit={sendMail} className="flex flex-col items-center w-full">
           <textarea
             name="message"
             placeholder="Nhập phản hồi của bạn tại đây!"
-            className="mt-5 mb-3 h-[30%] textarea textarea-bordered textarea-md w-full"
+            className="mt-5 mb-3 textarea textarea-bordered textarea-md w-full"
             required
           ></textarea>
           <input

@@ -210,14 +210,15 @@ function ChatBot(props) {
         </div>
       </div>
 
-      <div className="flex flex-col h-full items-center justify-between relative z-0 flex-grow">
+      <div className="flex flex-col items-center relative z-0 flex-grow" style={{ height: '80vh' }}>
         <div
           id="chat-area"
           className="
-          mt-2 lg:mt-5 text-xs lg:text-sm 
+          mt-2 lg:mt-3 text-xs lg:text-sm 
           scrollbar-thin scrollbar-thumb-gray-300 bg-white  
           scrollbar-thumb-rounded-full scrollbar-track-rounded-full
-          rounded-3xl border-2 md:w-[50%] md:p-3 p-1 w-full overflow-auto scroll-y-auto flex-grow"
+          rounded-3xl border-2 md:w-[50%] md:p-3 p-1 w-full overflow-y-auto flex-grow"
+          style={{ maxHeight: 'calc(100% - 60px)' }}
         >
           {dataChat.map((dataMessages, i) =>
             dataMessages[0] === "start" ? (
@@ -298,7 +299,7 @@ function ChatBot(props) {
           )}
           <div ref={messagesEndRef} />
         </div>
-        <div className="grid md:w-[50%] bg-gradient-to-r from-orange-50 to-orange-100 p-1 rounded-t-lg" style={{ zIndex: 10 }}>
+        <div className="grid md:w-[50%] bg-gradient-to-r from-orange-50 to-orange-100 p-1 rounded-t-lg mt-1" style={{ zIndex: 10 }}>
           <input
             type="text"
             placeholder="Nhập câu hỏi tại đây..."
