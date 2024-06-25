@@ -1,7 +1,6 @@
 import robot_img from "../assets/robot_image.png";
 import { useState, useRef, useEffect } from "react";
 import ScaleLoader from "react-spinners/ScaleLoader";
-import { TypeAnimation } from "react-type-animation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMessage } from "@fortawesome/free-regular-svg-icons";
 
@@ -52,7 +51,7 @@ function ChatBot(props) {
   }, []);
 
   const scrollToEndChat = () => {
-    messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
+    messagesEndRef.current.scrollIntoView({ behavior: "auto" });
   };
 
   const onChangeHandler = (event) => {
@@ -116,7 +115,7 @@ function ChatBot(props) {
   };
 
   return (
-    <div className="bg-gradient-to-r from-orange-50 to-orange-100 min-h-screen flex flex-col">
+    <div className="bg-gradient-to-r from-orange-50 to-orange-100 flex flex-col" style={{ height: '87vh' }}>
       {/* Dropdown for model selection on mobile */}
       <div className="lg:hidden p-2 flex justify-center bg-gradient-to-r from-orange-50 to-orange-100">
         <select
@@ -210,15 +209,15 @@ function ChatBot(props) {
         </div>
       </div>
 
-      <div className="flex flex-col items-center relative z-0 flex-grow" style={{ height: '80vh' }}>
+      <div className="flex flex-col h-full items-center relative z-0 flex-grow">
         <div
           id="chat-area"
           className="
-          mt-2 lg:mt-3 text-xs lg:text-sm 
+          mt-2 lg:mt-5 text-xs lg:text-sm 
           scrollbar-thin scrollbar-thumb-gray-300 bg-white  
           scrollbar-thumb-rounded-full scrollbar-track-rounded-full
-          rounded-3xl border-2 md:w-[50%] md:p-3 p-1 w-full overflow-y-auto flex-grow"
-          style={{ maxHeight: 'calc(100% - 60px)' }}
+          rounded-3xl border-2 md:w-[50%] md:p-3 p-1 w-full overflow-auto scroll-y-auto flex-grow"
+          style={{ maxHeight: 'calc(74vh - 91px)' }} // Adjust this value based on the footer height
         >
           {dataChat.map((dataMessages, i) =>
             dataMessages[0] === "start" ? (
@@ -229,15 +228,9 @@ function ChatBot(props) {
                   </div>
                 </div>
                 <div className="chat-bubble chat-bubble-info break-words">
-                  <TypeAnimation
-                    style={{ whiteSpace: 'pre-line' }}
-                    sequence={[
-                      dataMessages[1][0],
-                      () => setIsGen(false),
-                    ]}
-                    cursor={false}
-                    speed={100}
-                  />
+                  <p style={{ whiteSpace: 'pre-line' }}>
+                    {dataMessages[1][0]}
+                  </p>
                   {dataMessages[1][1] === null || dataMessages[1][1].length === 0 ? (
                     ""
                   ) : (
@@ -299,7 +292,7 @@ function ChatBot(props) {
           )}
           <div ref={messagesEndRef} />
         </div>
-        <div className="grid md:w-[50%] bg-gradient-to-r from-orange-50 to-orange-100 p-1 rounded-t-lg mt-1" style={{ zIndex: 10 }}>
+        <div className="grid md:w-[50%] bg-gradient-to-r from-orange-50 to-orange-100 p-1 rounded-t-lg" style={{ zIndex: 10 }}>
           <input
             type="text"
             placeholder="Nhập câu hỏi tại đây..."
