@@ -292,7 +292,7 @@ function ChatBot(props) {
           )}
           <div ref={messagesEndRef} />
         </div>
-        <div className="grid md:w-[50%] bg-gradient-to-r from-orange-50 to-orange-100 p-1 rounded-t-lg" style={{ zIndex: 10 }}>
+        <div className="grid md:w-[50%] bg-gradient-to-r from-orange-50 to-orange-100 p-1 rounded-t-lg hide-on-small-screen" style={{ zIndex: 10 }}>
           <input
             type="text"
             placeholder="Nhập câu hỏi tại đây..."
@@ -326,8 +326,7 @@ function ChatBot(props) {
             </svg>
           </button>
           <p className="text-xs col-start-1 col-end-12 text-justify p-1">
-            <b>Lưu ý: </b>Mô hình có thể đưa ra câu trả lời không chính xác ở
-            một số trường hợp, vì vậy hãy luôn kiểm chứng thông tin bạn nhé!
+            <b>Lưu ý: </b>LegalBizAI có thể mắc lỗi. Hãy kiểm tra các thông tin quan trọng!
           </p>
         </div>
       </div>
