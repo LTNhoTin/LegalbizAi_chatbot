@@ -1,5 +1,5 @@
 # Sử dụng Node.js image chính thức từ Docker Hub
-FROM node:14
+FROM node:18-alpine
 
 # Thiết lập thư mục làm việc
 WORKDIR /app
@@ -13,14 +13,8 @@ RUN npm install
 # Sao chép tất cả các file từ máy chủ vào container
 COPY . .
 
-# Build ứng dụng
-RUN npm run build
+# Expose port 5173
+EXPOSE 5173
 
-# Cài đặt serve để phục vụ ứng dụng tĩnh
-RUN npm install -g serve
-
-# Expose port 3000
-EXPOSE 3000
-
-# Chạy ứng dụng
-CMD ["serve", "-s", "dist"]
+# Chạy ứng dụng trong chế độ development với host được mở
+CMD ["npm", "run", "dev"]
