@@ -3,6 +3,7 @@ import { useState, useRef, useEffect } from "react";
 import ScaleLoader from "react-spinners/ScaleLoader";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMessage } from "@fortawesome/free-regular-svg-icons";
+import { sendMessageChatService } from './chatbotService';
 
 function ChatBot(props) {
   const messagesEndRef = useRef(null);
@@ -68,16 +69,10 @@ function ChatBot(props) {
       setChatHistory((prev) => [promptInput, ...prev]);
 
       try {
-        const response = await fetch(`https://toad-vast-civet.ngrok-free.app/rag/${model}?q=${promptInput}`, {
-          method: "get",
-          headers: new Headers({
-            "ngrok-skip-browser-warning": "69420",
-          }),
-        });
-        const result = await response.json();
+        const result = await sendMessageChatService(promptInput, model);
         setDataChat((prev) => [
           ...prev,
-          ["start", [result.result, result.source_documents, model]],
+          ["start", [result.answer, result.source_documents, model]],
         ]);
       } catch (error) {
         setDataChat((prev) => [
@@ -286,7 +281,7 @@ function ChatBot(props) {
                   aria-label="Loading Spinner"
                   data-testid="loader"
                 />
-                <p className="text-xs font-medium">{timeOfRequest + "/60s"}</p>
+                <p className="text-xs font-medium">{timeOfRequest + "/30s"}</p>
               </div>
             </div>
           )}
