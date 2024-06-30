@@ -8,7 +8,9 @@ const timeoutPromise = (ms) => new Promise((_, reject) => {
 
 export const sendMessageChatService = async (promptInput, model) => {
   try {
-    const endpoint = model === 'LegalbizAI' ? 'https://your-backend-url/ask/legalbizai' : 'https://your-backend-url/ask/legalbizai_gpt';
+    const endpoint = model === 'LegalbizAI' 
+      ? 'https://backend-url/ask/legalbizai' 
+      : 'https://backend-url/ask/legalbizai_gpt';
     const response = await Promise.race([
       axios.post(endpoint, { question: promptInput }),
       timeoutPromise(TIMEOUT)
