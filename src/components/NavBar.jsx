@@ -10,26 +10,29 @@ function NavBar() {
   const customStyle = {
     color: 'hsl(22.47deg 93.52% 57.57%)',
     borderColor: 'hsl(22.47deg 93.52% 57.57%)',
+    textTransform: 'none',
   };
 
   const activeStyle = {
     ...customStyle,
     textDecoration: 'none',
     cursor: 'default',
+    color: 'white',
+    backgroundColor: 'lightsalmon',
   };
 
   const hoveredStyle = {
     color: 'white',
     borderColor: 'hsl(22.47deg 93.52% 57.57%)',
+    backgroundColor: 'lightsalmon',
+    textTransform: 'none',
   };
 
   const getStyle = (path) => {
-    if (location.pathname === path && hoveredTab === path) {
-      return hoveredStyle;
-    } else if (location.pathname === path) {
-      return activeStyle;
+    if (location.pathname === path) {
+      return hoveredTab === path ? hoveredStyle : activeStyle;
     } else {
-      return customStyle;
+      return hoveredTab === path ? hoveredStyle : customStyle;
     }
   };
 
@@ -84,7 +87,7 @@ function NavBar() {
               </li>
               <li>
                 <Link to="/issue" style={getStyle('/issue')} onClick={() => handleLinkClick('/issue')}>
-                  Báo lỗi/ Góp ý
+                  Báo lỗi/Góp ý
                 </Link>
               </li>
             </ul>
@@ -92,7 +95,14 @@ function NavBar() {
         </div>
         <a
           onClick={() => handleLinkClick("/")}
-          className="btn btn-ghost normal-case font-extrabold text-xl bg-[linear-gradient(90deg,hsl(var(--s))_0%,hsl(var(--sf))_9%,hsl(var(--pf))_42%,hsl(var(--p))_47%,hsl(var(--a))_100%)] bg-clip-text will-change-auto [-webkit-text-fill-color:transparent] [transform:translate3d(0,0,0)] motion-reduce:!tracking-normal max-[1280px]:!tracking-normal [@supports(color:oklch(0_0_0))]:bg-[linear-gradient(90deg,hsl(var(--s))_4%,color-mix(in_oklch,hsl(var(--sf)),hsl(var(--pf)))_22%,hsl(var(--p))_45%,color-mix(in_oklch,hsl(var(--p)),hsl(var(--a)))_67%,hsl(var(--a))_100.2%)]"
+          className="btn btn-ghost normal-case font-extrabold text-xl"
+          style={{
+            background: 'linear-gradient(90deg, #FF6F61, #FF8C42, #FFA600)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            willChange: 'auto',
+            transform: 'translate3d(0, 0, 0)',
+          }}
         >
           FPTU LegalBot
         </a>

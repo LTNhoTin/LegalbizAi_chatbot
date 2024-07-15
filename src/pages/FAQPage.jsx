@@ -1,7 +1,7 @@
 const dataFAQs = [
   [
-    "Chatbot LegalBizAI hoạt động như thế nào?",
-    "Chatbot LegalBizAI hoạt động bằng cách sử dụng kỹ thuật tìm văn bản liên quan đến câu hỏi trong bộ dữ liệu đã được vector hóa (text similarity) và lưu trữ thông qua cơ sở dữ liệu vector. Giúp lấy ra những đoạn văn bản có liên quan sau đó dùng mô hình ngôn ngữ lớn (LLM) để sinh câu trả lời."
+    "Phạm vi kiến thức của LegalBizAI là gì?",
+    "Phạm vi kiến thức của chatbot tập trung vào Luật Doanh nghiệp 2020, cung cấp thông tin hữu ích về các quy định thành lập, quản lý và vận hành doanh nghiệp tại Việt Nam. Sản phẩm này đặc biệt phù hợp cho các doanh nhân, nhà đầu tư, kế toán, luật sư, chuyên viên pháp chế, sinh viên luật, và bất kỳ ai quan tâm đến lĩnh vực kinh doanh và muốn tìm hiểu về luật doanh nghiệp."
   ],
   [
     "Cách sử dụng LegalBizAI để tra cứu thông tin",
@@ -21,7 +21,7 @@ function FAQPage() {
   return (
     <div className="flex justify-center min-h-[85vh] h-auto bg-gradient-to-br from-orange-50 to-orange-100">
       <div className="md:w-[50%]">
-        <h1 className="text-3xl text-center font-bold p-5 bg-[linear-gradient(90deg,hsl(var(--s))_0%,hsl(var(--sf))_9%,hsl(var(--pf))_42%,hsl(var(--p))_47%,hsl(var(--a))_100%)] bg-clip-text will-change-auto [-webkit-text-fill-color:transparent] [transform:translate3d(0,0,0)] motion-reduce:!tracking-normal max-[1280px]:!tracking-normal [@supports(color:oklch(0_0_0))]:bg-[linear-gradient(90deg,hsl(var(--s))_4%,color-mix(in_oklch,hsl(var(--sf)),hsl(var(--pf)))_22%,hsl(var(--p))_45%,color-mix(in_oklch,hsl(var(--p)),hsl(var(--a)))_67%,hsl(var(--a))_100.2%)]">
+        <h1 className="text-3xl text-center font-bold p-5 bg-clip-text text-transparent bg-gradient-to-r from-orange-400 to-orange-600">
           Những câu hỏi thường gặp (FAQs)
         </h1>
         {dataFAQs.map((item, i) => (
