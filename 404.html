@@ -5,9 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Redirecting...</title>
     <script type="text/javascript">
-      // This script will ensure that the page is redirected to the correct URL
+      // This script ensures that the page is redirected to the correct URL
       var path = window.location.pathname;
-      var redirectTo = '/LegalbizAi_chatbot' + path;
+      var search = window.location.search;
+      var hash = window.location.hash;
+      var redirectTo = '/LegalbizAi_chatbot' + path + search + hash;
       window.location.replace(redirectTo);
     </script>
   </head>
