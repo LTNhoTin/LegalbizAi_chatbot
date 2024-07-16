@@ -3,6 +3,7 @@ import react from '@vitejs/plugin-react';
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: '/LegalbizAi_chatbot_UI/', // Thêm base path cho GitHub Pages
   plugins: [react()],
   resolve: {
     alias: {
