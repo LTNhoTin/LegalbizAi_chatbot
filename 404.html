@@ -5,12 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Redirecting...</title>
     <script type="text/javascript">
-      // This script ensures that the page is redirected to the correct URL
-      var currentPath = window.location.pathname;
-      var newPath = '/LegalbizAi_chatbot' + currentPath;
-
-      if (!currentPath.startsWith('/LegalbizAi_chatbot')) {
-        window.location.replace(newPath);
+      var path = window.location.pathname;
+      var search = window.location.search;
+      var hash = window.location.hash;
+      if (!path.startsWith('/LegalbizAi_chatbot')) {
+        var newPath = '/LegalbizAi_chatbot' + path;
+        window.location.replace(newPath + search + hash);
+      } else {
+        var relativePath = path.replace('/LegalbizAi_chatbot', '');
+        window.location.replace('/LegalbizAi_chatbot/index.html?redirect=' + relativePath + search + hash);
       }
     </script>
   </head>
