@@ -6,10 +6,17 @@ import ChatBot from "./components/ChatBot";
 import FAQPage from "./pages/FAQPage";
 import IssuePage from "./pages/IssuePage";
 import Footer from "./components/Footer";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 
-function App() {
-  useEffect(() => {}, []);
+function App({ initialPath }) {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (initialPath) {
+      navigate(initialPath);
+    }
+  }, [initialPath, navigate]);
+
   const [currentPage, setCurrentPage] = useState("Home");
 
   return (
