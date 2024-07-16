@@ -1,23 +1,16 @@
 // src/App.jsx
 import { useEffect, useState } from "react";
-import { useNavigate, useLocation, Routes, Route } from "react-router-dom";
 import NavBar from "./components/NavBar";
 import HomePage from "./pages/HomePage";
 import ChatBot from "./components/ChatBot";
 import FAQPage from "./pages/FAQPage";
 import IssuePage from "./pages/IssuePage";
 import Footer from "./components/Footer";
+import { Routes, Route } from "react-router-dom";
 
-function App({ initialPath }) {
-  const navigate = useNavigate();
-  const location = useLocation();
+function App() {
+  useEffect(() => {}, []);
   const [currentPage, setCurrentPage] = useState("Home");
-
-  useEffect(() => {
-    if (initialPath && location.pathname === "/") {
-      navigate(initialPath);
-    }
-  }, [initialPath, location.pathname, navigate]);
 
   return (
     <div className="flex flex-col min-h-screen">

@@ -150,7 +150,7 @@ function NavBar() {
               onMouseEnter={() => setHoveredTab('/issue')}
               onMouseLeave={() => setHoveredTab(null)}
             >
-              Báo lỗi/Góp ý
+              Báo lỗi/ Góp ý
             </button>
           </li>
         </ul>
