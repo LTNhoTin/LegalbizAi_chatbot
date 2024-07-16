@@ -1,6 +1,6 @@
 // chatbotService.js
 export const sendMessageChatService = async (promptInput, model) => {
-    const response = await fetch('https://cb5d-1-53-125-127.ngrok-free.app/stream', {
+    const response = await fetch('https://coral-amusing-martin.ngrok-free.app/stream', {
       method: "post",
       body: JSON.stringify({
         message: promptInput,
