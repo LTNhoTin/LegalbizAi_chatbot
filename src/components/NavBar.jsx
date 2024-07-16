@@ -71,22 +71,22 @@ function NavBar() {
               className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
             >
               <li>
-                <Link to="/LegalbizAi_chatbot/" style={getStyle('/')} onClick={() => handleLinkClick('/')}>
+                <Link to="/" style={getStyle('/')} onClick={() => handleLinkClick('/')}>
                   Trang chủ
                 </Link>
               </li>
               <li>
-                <Link to="/LegalbizAi_chatbot/chat" style={getStyle('/chat')} onClick={() => handleLinkClick('/chat')}>
+                <Link to="/chat" style={getStyle('/chat')} onClick={() => handleLinkClick('/chat')}>
                   Trò chuyện
                 </Link>
               </li>
               <li>
-                <Link to="/LegalbizAi_chatbot/faq" style={getStyle('/faq')} onClick={() => handleLinkClick('/faq')}>
+                <Link to="/faq" style={getStyle('/faq')} onClick={() => handleLinkClick('/faq')}>
                   FAQs
                 </Link>
               </li>
               <li>
-                <Link to="/LegalbizAi_chatbot/issue" style={getStyle('/issue')} onClick={() => handleLinkClick('/issue')}>
+                <Link to="/issue" style={getStyle('/issue')} onClick={() => handleLinkClick('/issue')}>
                   Báo lỗi/Góp ý
                 </Link>
               </li>
@@ -94,7 +94,7 @@ function NavBar() {
           )}
         </div>
         <a
-          onClick={() => handleLinkClick("/LegalbizAi_chatbot/")}
+          onClick={() => handleLinkClick("/")}
           className="btn btn-ghost normal-case font-extrabold text-xl"
           style={{
             background: 'linear-gradient(90deg, #FF6F61, #FF8C42, #FFA600)',
