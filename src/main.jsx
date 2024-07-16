@@ -5,10 +5,12 @@ import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 import './index.css';
 
+const redirectPath = new URLSearchParams(window.location.search).get('redirect');
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter basename="/LegalbizAi_chatbot">
-      <App />
+      <App initialPath={redirectPath} />
     </BrowserRouter>
   </React.StrictMode>,
 );
