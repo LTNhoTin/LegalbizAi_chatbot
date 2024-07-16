@@ -5,6 +5,21 @@
   <link rel="icon" type="image/svg+xml" href="/LegalbizAi_chatbot/assets/ic5-Bns7uc8Y.png" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>LegalBizAI</title>
+  <script>
+    // Lưu đường dẫn hiện tại vào localStorage trước khi reload hoặc rời khỏi trang
+    window.addEventListener('beforeunload', function() {
+      localStorage.setItem('lastPath', window.location.pathname);
+    });
+
+    // Chuyển hướng đến đường dẫn đã lưu trong localStorage sau khi trang được tải lại
+    window.addEventListener('load', function() {
+      const lastPath = localStorage.getItem('lastPath');
+      if (lastPath && lastPath.startsWith('/LegalbizAi_chatbot')) {
+        localStorage.removeItem('lastPath'); // Xóa đường dẫn sau khi sử dụng để tránh chuyển hướng lặp lại
+        window.history.replaceState({}, '', lastPath);
+      }
+    });
+  </script>
   <script type="module" crossorigin src="/LegalbizAi_chatbot/assets/index-C96ZmvnX.js"></script>
   <link rel="stylesheet" crossorigin href="/LegalbizAi_chatbot/assets/index-DOJO-LLA.css">
 </head>
