@@ -94,7 +94,7 @@ function NavBar() {
           )}
         </div>
         <a
-          onClick={() => handleLinkClick("/")}
+          onClick={() => handleLinkClick("/LegalbizAi_chatbot/")}
           className="btn btn-ghost normal-case font-extrabold text-xl"
           style={{
             background: 'linear-gradient(90deg, #FF6F61, #FF8C42, #FFA600)',
