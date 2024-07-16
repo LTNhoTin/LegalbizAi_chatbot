@@ -1,13 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta http-equiv="refresh" content="0; URL='/LegalbizAi_chatbot/'" />
+  <meta charset="UTF-8">
+  <title>Redirecting...</title>
+  <script type="text/javascript">
+    // Get the pathname from the URL
+    var pathname = window.location.pathname;
+
+    // If the pathname starts with the base path, remove it
+    var basePath = '/LegalbizAi_chatbot';
+    if (pathname.startsWith(basePath)) {
+      pathname = pathname.substring(basePath.length);
+    }
+
+    // Redirect to the correct path
+    window.location.replace(basePath + pathname);
+  </script>
 </head>
 <body>
-  <script>
-    // This script redirects all 404 requests to the main index.html
-    const redirect = '/LegalbizAi_chatbot/';
-    window.location.replace(redirect);
-  </script>
+  <p>Redirecting...</p>
 </body>
 </html>
