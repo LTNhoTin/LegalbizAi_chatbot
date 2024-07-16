@@ -6,11 +6,12 @@
     <title>Redirecting...</title>
     <script type="text/javascript">
       // This script ensures that the page is redirected to the correct URL
-      var path = window.location.pathname;
-      var search = window.location.search;
-      var hash = window.location.hash;
-      var redirectTo = '/LegalbizAi_chatbot' + path + search + hash;
-      window.location.replace(redirectTo);
+      var currentPath = window.location.pathname;
+      var newPath = '/LegalbizAi_chatbot' + currentPath;
+
+      if (!currentPath.startsWith('/LegalbizAi_chatbot')) {
+        window.location.replace(newPath);
+      }
     </script>
   </head>
   <body>
