@@ -1,22 +1,13 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Redirecting...</title>
-    <script type="text/javascript">
-      var path = window.location.pathname;
-      var search = window.location.search;
-      var hash = window.location.hash;
-      if (!path.startsWith('/LegalbizAi_chatbot')) {
-        var newPath = '/LegalbizAi_chatbot' + path;
-        window.location.replace(newPath + search + hash);
-      } else {
-        var relativePath = path.replace('/LegalbizAi_chatbot', '');
-        window.location.replace('/LegalbizAi_chatbot/index.html?redirect=' + relativePath + search + hash);
-      }
-    </script>
-  </head>
-  <body>
-  </body>
+<head>
+  <meta http-equiv="refresh" content="0; URL='/LegalbizAi_chatbot/'" />
+</head>
+<body>
+  <script>
+    // This script redirects all 404 requests to the main index.html
+    const redirect = '/LegalbizAi_chatbot/';
+    window.location.replace(redirect);
+  </script>
+</body>
 </html>
