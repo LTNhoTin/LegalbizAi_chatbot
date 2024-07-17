@@ -93,7 +93,6 @@ function ChatBot(props) {
         if (promptInput !== '' && isLoading === false) {
             setTimeOfRequest(0);
             setIsGen(true);
-            const currentInput = promptInput;
             setPromptInput('');
             inputRef.current.style.height = 'auto';
             setIsLoad(true);
