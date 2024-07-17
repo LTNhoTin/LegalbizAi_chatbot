@@ -5,7 +5,8 @@ import { faMessage } from '@fortawesome/free-regular-svg-icons';
 import ReactMarkdown from 'react-markdown';
 import robot_img from '../assets/ic5.png';
 import { sendMessageChatService } from './chatbotService';
-import LinkBox from './LinkBox'; // Import component LinkBox
+import LinkBox from './LinkBox'; 
+import commonQuestionsData from '../db/commonQuestions.json'; 
 
 function ChatBot(props) {
     const messagesEndRef = useRef(null);
@@ -21,7 +22,7 @@ function ChatBot(props) {
         [
             'start',
             [
-                'Xin chào! Đây là LegalBizAI, trợ lý đắc lực về luật doanh nghiệp của bạn! Bạn muốn tìm kiếm thông tin về điều gì? Đừng quên chọn mô hình phù hợp để mình có thể giúp bạn tìm kiếm thông tin chính xác nhất nha. 😄',
+                'Xin chào! Đây là LegalBizAI, trợ lý đắc lực về luật doanh nghiệp của bạn! Bạn muốn tìm kiếm thông tin về điều gì? Đừng quên chọn mô hình phù hợp để mình có thể giúp bạn tìm kiếm thông tin chính xác nhất nha.',
                 null,
                 null
             ],
@@ -38,20 +39,7 @@ function ChatBot(props) {
         },
     ];
 
-    const commonQuestions = [
-        'Doanh nghiệp do Nhà nước nắm giữ 100% vốn điều lệ bị xem xét giải thể trong các trường hợp nào?',
-        'Các khoản nợ của doanh nghiệp tư nhân giải thể do kinh doanh lỗ vốn được thanh toán theo thứ tự ưu tiên như thế nào?',
-        'Nghĩa vụ của Đại hội đồng cổ đông được quy định như thế nào?',
-        'Doanh nghiệp được thành lập chi nhánh ở nước ngoài không?',
-        'Doanh nghiệp muốn cấp lại GCN đăng ký địa điểm kinh doanh thì nộp đơn đến Phòng ĐKKD nơi đặt trụ sở chính hay nơi đặt địa điểm kinh doanh?',
-        'Một doanh nghiệp do Nhà nước nắm giữ 100% vốn điều lệ có thể chia tài sản để thành lập bao nhiêu doanh nghiệp mới?',
-        'Tiền lương trả cho Giám đốc công ty TNHH hai thành viên trở lên được được tính vào chi phí kinh doanh của công ty không?',
-        'Khi nội dung kê khai trong hồ sơ đăng ký hộ kinh doanh là giả mạo thì có bị thu hồi Giấy chứng nhận đăng ký hộ kinh doanh không?',
-        'Trách nhiệm trả nợ trong trường hợp doanh nghiệp có khoản thua lỗ lớn hơn vốn điều lệ (công ty cổ phần và công ty TNHH)?',
-        'Các nguyên tắc nào cần lưu ý để chuyển đổi doanh nghiệp do Nhà nước nắm giữ 100% vốn điều lệ thành công ty trách nhiệm hữu hạn hai thành viên trở lên?',
-        'Ban kiểm soát công ty cổ phần phải có trách nhiệm thẩm định tính đầy đủ, hợp pháp và trung thực của các báo cáo nào?',
-        'Biện pháp thu hồi Giấy phép kinh doanh đối với doanh nghiệp được áp dụng trong trường hợp nào?',
-    ];
+    const commonQuestions = commonQuestionsData;
 
     useEffect(() => {
         scrollToEndChat();
@@ -91,6 +79,12 @@ function ChatBot(props) {
 
     const onChangeHandler = (event) => {
         setPromptInput(event.target.value);
+        autoResize(event.target);
+    };
+
+    const autoResize = (textarea) => {
+        textarea.style.height = 'auto';
+        textarea.style.height = textarea.scrollHeight + 'px';
     };
 
     const sendMessageChat = async () => {
@@ -123,26 +117,23 @@ function ChatBot(props) {
     };
 
     const handleKeyDown = (event) => {
-        if (event.key === 'Enter') {
+        if (event.key === 'Enter' && !event.shiftKey) {
             event.preventDefault(); // Ngăn chặn hành vi mặc định của sự kiện Enter
             sendMessageChat();
         }
     };
 
-    const [reference, setReference] = useState({
-        title: '',
-        source: '',
-        url: '',
-        text: ``,
-    });
-
-    const handleReferenceClick = (source, modelType) => {
-        setReference({
-            title: source.metadata.title,
-            source: modelType,
-            url: source.metadata.url,
-            text: source.page_content,
-        });
+    const handleQuickQuestionClick = (question) => {
+        const selectedQuestion = commonQuestions.find(q => q.question === question);
+        if (selectedQuestion) {
+            setDataChat(prev => [
+                ...prev,
+                ['end', [selectedQuestion.question, model]],
+                ['start', [selectedQuestion.result, selectedQuestion.source_documents, selectedQuestion.references, model]]
+            ]);
+            setChatHistory(prev => [selectedQuestion.question, ...prev]);
+            scrollToEndChat();
+        }
     };
 
     return (
@@ -175,6 +166,10 @@ function ChatBot(props) {
                 .btn-send:hover {
                     background-color: #ff9684 !important; 
                     border-color: #FF6347 !important; 
+                }
+                .textarea-auto-resize {
+                    resize: none;
+                    overflow: hidden;
                 }
             `}
             </style>
@@ -256,17 +251,16 @@ function ChatBot(props) {
                         </h2>
 
                         {commonQuestions.map((mess, i) => (
-                            <li key={i} onClick={() => setPromptInput(mess)}>
+                            <li key={i} onClick={() => handleQuickQuestionClick(mess.question)}>
                                 <p className="max-w-64">
                                     <FontAwesomeIcon icon={faMessage} />
-                                    {mess}
+                                    {mess.question}
                                 </p>
                             </li>
                         ))}
                     </ul>
                 </div>
             </div>
-
 
             <div className="flex flex-col h-full items-center relative z-0 flex-grow">
                 <div
@@ -346,17 +340,17 @@ function ChatBot(props) {
                     className="grid md:w-[50%] bg-gradient-to-r from-orange-50 to-orange-100 p-1 rounded-t-lg hide-on-small-screen"
                     style={{ zIndex: 10 }}
                 >
-                    <input
-                        type="text"
+                    <textarea
                         placeholder="Nhập câu hỏi tại đây..."
-                        className="mr-1 shadow-xl border-2 focus:outline-none px-2 rounded-2xl input-primary col-start-1 md:col-end-12 col-end-11"
+                        className="mr-1 shadow-xl border-2 focus:outline-none px-2 rounded-2xl input-primary col-start-1 md:col-end-12 col-end-11 textarea-auto-resize"
                         onChange={onChangeHandler}
                         onKeyDown={handleKeyDown}
                         disabled={isGen}
                         value={promptInput}
                         ref={inputRef}
+                        rows="1"
+                        style={{ resize: 'none', overflow: 'hidden', height: 'auto', lineHeight: '3', display: 'flex', alignItems: 'center' }}                    
                     />
-
                     <button
                         disabled={isGen}
                         onClick={sendMessageChat}
