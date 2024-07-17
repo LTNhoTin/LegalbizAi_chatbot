@@ -77,14 +77,16 @@ function ChatBot(props) {
         messagesEndRef.current.scrollIntoView({ behavior: 'auto' });
     };
 
-    const onChangeHandler = (event) => {
-        setPromptInput(event.target.value);
-        autoResize(event.target);
-    };
-
+    // Hàm autoResize
     const autoResize = (textarea) => {
         textarea.style.height = 'auto';
         textarea.style.height = textarea.scrollHeight + 'px';
+    };
+
+    // Hàm onChangeHandler
+    const onChangeHandler = (event) => {
+        setPromptInput(event.target.value);
+        autoResize(event.target);
     };
 
     const sendMessageChat = async () => {
@@ -92,6 +94,7 @@ function ChatBot(props) {
             setTimeOfRequest(0);
             setIsGen(true);
             setPromptInput('');
+            inputRef.current.style.height = 'auto';
             setIsLoad(true);
             setDataChat((prev) => [...prev, ['end', [promptInput, model]]]);
             setChatHistory((prev) => [promptInput, ...prev]);
@@ -112,6 +115,7 @@ function ChatBot(props) {
                 setIsLoad(false);
                 setIsGen(false);
                 inputRef.current.focus();
+                
             }
         }
     };
@@ -349,7 +353,7 @@ function ChatBot(props) {
                         value={promptInput}
                         ref={inputRef}
                         rows="1"
-                        style={{ resize: 'none', overflow: 'hidden', height: 'auto', lineHeight: '3', display: 'flex', alignItems: 'center' }}                    
+                        style={{ resize: 'none', overflow: 'hidden', lineHeight: '3'}}                    
                     />
                     <button
                         disabled={isGen}
