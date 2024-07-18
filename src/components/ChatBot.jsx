@@ -109,7 +109,7 @@ function ChatBot(props) {
                 console.log(error);
                 setDataChat((prev) => [
                     ...prev,
-                    ['start', ['Lỗi, không thể kết nối với server', null, null]],
+                    ['start', ['Xin lỗi, hiện không thể kết nối với server. Vui lòng đợi một chút và hỏi lại nhé!', null, null]],
                 ]);
             } finally {
                 setIsLoad(false);
