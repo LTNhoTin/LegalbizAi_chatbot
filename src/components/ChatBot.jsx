@@ -44,7 +44,7 @@ function ChatBot(props) {
     useEffect(() => {
         scrollToEndChat();
         inputRef.current.focus();
-    }, [isLoading]);
+    }, [chatHistory]);
 
     useEffect(() => {
         const interval = setInterval(() => {
