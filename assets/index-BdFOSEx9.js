@@ -852,7 +852,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 * Kết thúc thời hạn hoạt động đã ghi trong Điều lệ công ty mà không có quy định gia hạn.
 
 *Trích dẫn luật:* _Điều 39, Khoản 1, Nghị định 23/2022/NĐ-CP về thành lập, sắp xếp lại, chuyển đổi sở hữu, chuyển giao quyền đại diện chủ sở hữu tại doanh nghiệp do nhà nước nắm giữ 100% vốn điều lệ._
-`,source_documents:[{title:"Điều 39 Nghị định 01/2021/NĐ-CP",link:"https://thuvienphapluat.vn/van-ban/Doanh-nghiep/Nghi-dinh-23-2022-ND-CP-thanh-lap-doanh-nghiep-do-Nha-nuoc-nam-giu-100-von-dieu-le-509241.aspx?anchor=dieu_39"}]},{id:2,question:"Thành viên Hội đồng quản trị không tham gia các hoạt động của Hội đồng quản trị trong bao lâu thì bị bãi nhiệm?",references:null,result:`Thành viên Hội đồng quản trị không tham gia các hoạt động của Hội đồng quản trị trong **06 tháng liên tục**, trừ trường hợp bất khả kháng, thì bị bãi nhiệm.
+`,source_documents:[{title:"Điều 39 Nghị định 23/2022/NĐ-CP",link:"https://thuvienphapluat.vn/van-ban/Doanh-nghiep/Nghi-dinh-23-2022-ND-CP-thanh-lap-doanh-nghiep-do-Nha-nuoc-nam-giu-100-von-dieu-le-509241.aspx?anchor=dieu_39"}]},{id:2,question:"Thành viên Hội đồng quản trị không tham gia các hoạt động của Hội đồng quản trị trong bao lâu thì bị bãi nhiệm?",references:null,result:`Thành viên Hội đồng quản trị không tham gia các hoạt động của Hội đồng quản trị trong **06 tháng liên tục**, trừ trường hợp bất khả kháng, thì bị bãi nhiệm.
 
 *Trích dẫn luật:*
 
