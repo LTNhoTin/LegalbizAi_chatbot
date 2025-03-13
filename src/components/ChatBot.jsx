@@ -44,7 +44,7 @@ function ChatBot(props) {
     useEffect(() => {
         scrollToEndChat();
         inputRef.current.focus();
-    }, [chatHistory]);
+    }, [isLoading]);
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -109,7 +109,7 @@ function ChatBot(props) {
                 console.log(error);
                 setDataChat((prev) => [
                     ...prev,
-                    ['start', ['Xin lỗi, hiện không thể kết nối với server. Vui lòng đợi một chút và hỏi lại nhé!', null, null]],
+                    ['start', ['Lỗi, không thể kết nối với server', null, null]],
                 ]);
             } finally {
                 setIsLoad(false);
